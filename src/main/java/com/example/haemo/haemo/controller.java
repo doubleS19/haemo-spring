@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class controller {
 
     @Autowired
-    PosttService testService;
+    PostService testService;
 
     @GetMapping("test")
     @ResponseBody
     public void gkatn(@RequestParam("pId") Integer pId,
-    @RequestParam("title") String title,
-    @RequestParam("content") String content,
-    @RequestParam("nickname") String nickname,
-    @RequestParam("person") Integer person,
-    @RequestParam("category") String category){
+                      @RequestParam("title") String title,
+                      @RequestParam("content") String content,
+                      @RequestParam("nickname") String nickname,
+                      @RequestParam("person") Integer person,
+                      @RequestParam("category") String category) {
         testService.test(pId, title, content, nickname, person, category);
         return;
     }
