@@ -9,5 +9,4 @@ public class HaemoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(HaemoApplication.class, args);
 	}
-
 }
