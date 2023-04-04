@@ -23,8 +23,8 @@ public class User {
     private String nickname;
 
     @Column(name = "major")
-    private int major;
+    private String major;
 
     @Column(name = "gender")
-    private int gender;
+    private String gender;
 }
