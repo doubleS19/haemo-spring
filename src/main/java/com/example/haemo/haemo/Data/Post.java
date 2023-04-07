@@ -28,7 +28,7 @@ public class Post {
     private String nickname;
 
     @Column(name = "person")
-    private Long person;
+    private int person;
 
     @Column(name = "category")
     private String category;
