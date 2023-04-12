@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "post")
 @AllArgsConstructor
@@ -32,4 +34,7 @@ public class Post {
 
     @Column(name = "category")
     private String category;
+
+    @Column(name = "createdAt")
+    private String createdAt;
 }
