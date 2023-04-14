@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.extern.java.Log;
 
 import java.time.LocalDateTime;
 
@@ -30,11 +31,14 @@ public class Post {
     private String nickname;
 
     @Column(name = "person")
-    private int person;
+    private Long person;
 
     @Column(name = "category")
     private String category;
 
     @Column(name = "createdAt")
     private String createdAt;
+
+    @Column(name = "type")
+    private Long type;
 }

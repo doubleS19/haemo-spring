@@ -1,6 +1,7 @@
 package com.example.haemo.haemo.Controller;
 
 import com.example.haemo.haemo.Data.Post;
+import com.example.haemo.haemo.Data.PostDto;
 import com.example.haemo.haemo.Repository.PostRepository;
 import com.example.haemo.haemo.Service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 
 @RestController
@@ -30,7 +33,22 @@ public class PostController {
 
     @GetMapping(produces = "application/json")
     @ResponseBody
-    public List<Post> fetchPost(){
-        return postRepository.findAll();
+    public List<PostDto> fetchPost(){
+        return postService.allCashBoardEntity();
     }
+
+    @GetMapping("/get")
+    @ResponseBody
+    public ResponseEntity<Post> getPostById(@RequestParam("id") Long id) {
+            Optional<Post> postOptional = postRepository.findById(id);
+            return postOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+//    @PostMapping
+//    @ResponseBody
+//    public ResponseEntity<Post> getPostById(@RequestBody PostDto postDto) {
+//        Post post = new Post();
+//            Optional<Post> postOptional = postRepository.findById(postDto.getPId());
+//            return postOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+//
+//    }
 }
