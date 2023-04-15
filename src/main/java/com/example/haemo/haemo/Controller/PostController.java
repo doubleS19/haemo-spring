@@ -37,12 +37,13 @@ public class PostController {
         return postService.allCashBoardEntity();
     }
 
-    @GetMapping("/get")
+    @GetMapping("/{id}")
     @ResponseBody
-    public ResponseEntity<Post> getPostById(@RequestParam("id") Long id) {
+    public ResponseEntity<Post> getPostById(@PathVariable Long id) {
             Optional<Post> postOptional = postRepository.findById(id);
-            return postOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        return postOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
+
 //    @PostMapping
 //    @ResponseBody
 //    public ResponseEntity<Post> getPostById(@RequestBody PostDto postDto) {
