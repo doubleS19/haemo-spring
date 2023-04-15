@@ -28,27 +28,27 @@ public class PostService {
         return postRepository.save(post);
     }
 
-    public List<PostDto> allCashBoardEntity(){
-        return exec();
-    }
-
-    public List<PostDto> exec(){
-        List<Post> postList = new ArrayList<>(postRepository.findAll());
-
-        List<PostDto> postDtoList = new ArrayList<>();
-
-        for(Post post: postList){
-            PostDto requestDetailAll = new PostDto();
-            requestDetailAll.setPId(post.getPId());
-            requestDetailAll.setTitle(post.getTitle());
-            requestDetailAll.setContent(post.getContent());
-            requestDetailAll.setCategory(post.getCategory());
-            requestDetailAll.setPerson(post.getPerson());
-            requestDetailAll.setNickname(post.getNickname());
-            requestDetailAll.setCreatedAt(post.getCreatedAt());
-            requestDetailAll.setType(post.getType());
-            postDtoList.add(requestDetailAll);
-        }
-        return postDtoList;
-    }
+//    public List<PostDto> allCashBoardEntity(){
+//        return exec();
+//    }
+//
+//    public List<PostDto> exec(){
+//        List<Post> postList = new ArrayList<>(postRepository.findAll());
+//
+//        List<PostDto> postDtoList = new ArrayList<>();
+//
+//        for(Post post: postList){
+//            PostDto requestDetailAll = new PostDto();
+//            requestDetailAll.setPId(post.getPId());
+//            requestDetailAll.setTitle(post.getTitle());
+//            requestDetailAll.setContent(post.getContent());
+//            requestDetailAll.setCategory(post.getCategory());
+//            requestDetailAll.setPerson(post.getPerson());
+//            requestDetailAll.setNickname(post.getNickname());
+//            requestDetailAll.setCreatedAt(post.getCreatedAt());
+//            requestDetailAll.setType(post.getType());
+//            postDtoList.add(requestDetailAll);
+//        }
+//        return postDtoList;
+//    }
 }

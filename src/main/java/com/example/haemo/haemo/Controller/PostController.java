@@ -33,8 +33,8 @@ public class PostController {
 
     @GetMapping(produces = "application/json")
     @ResponseBody
-    public List<PostDto> fetchPost(){
-        return postService.allCashBoardEntity();
+    public List<Post> getAllPost(){
+        return postRepository.findAll();
     }
 
     @GetMapping("/{id}")
