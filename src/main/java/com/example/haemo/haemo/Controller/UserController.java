@@ -27,7 +27,7 @@ public class UserController {
     @GetMapping("/{nickname}")
     @ResponseBody
     public User getUserByNickname(@PathVariable String nickname) {
-        User user = userRepository.findByNickname(nickname);
-        return user;
+        User findedUser = userService.findUserByNickname(nickname);
+        return findedUser;
     }
 }
