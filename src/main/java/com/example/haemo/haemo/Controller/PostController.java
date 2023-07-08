@@ -9,8 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 
 @RestController
@@ -55,6 +56,52 @@ public class PostController {
         User user = userController.getUserByNickname(userNick);
         return user;
     }
+
+    @GetMapping("/24hours")
+    public List<Post> get24HoursPosts() {
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        LocalDateTime twentyFourHoursAgo = currentDateTime.minusHours(24);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시");
+        String formattedTwentyFourHoursAgo = twentyFourHoursAgo.format(formatter);
+
+        return postService.getPostsAfterDate(formattedTwentyFourHoursAgo);
+    }
+
+
+//    @GetMapping("/filtered-posts")
+//    public List<Post> getFilteredPosts() {
+//        Date currentDate = new Date();
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.add(Calendar.DAY_OF_YEAR, 1);
+//        Date tomorrowDate = calendar.getTime();
+//
+//        List<Post> allPosts = postRepository.findAll();
+//        List<Post> filteredPosts = filterPostsByDate(allPosts, currentDate, tomorrowDate);
+//
+//        return filteredPosts;
+//    }
+//
+//    private List<Post> filterPostsByDate(List<Post> posts, Date currentDate, Date tomorrowDate) {
+//        List<Post> filteredPosts = new ArrayList<>();
+//
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy년 MM월 dd일 hh시");
+//
+//        for (Post post : posts) {
+//            String postDateString = post.getDate(); // 게시물의 날짜를 문자열로 가져옴
+//            try {
+//                Date postDate = dateFormat.parse(postDateString);
+//
+//                if (postDate.after(currentDate) && postDate.before(tomorrowDate)) {
+//                    filteredPosts.add(post);
+//                }
+//            } catch (Exception e) {
+//                // 예외 처리
+//            }
+//        }
+//
+//        return filteredPosts;
+//    }
 
 //    @PostMapping
 //    @ResponseBody

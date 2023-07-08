@@ -36,8 +36,8 @@ public class Post {
     @Column(name = "category")
     private String category;
 
-    @Column(name = "createdAt")
-    private String createdAt;
+    @Column(name = "date")
+    private String date;
 
     @Column(name = "type")
     private Long type;
