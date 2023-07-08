@@ -6,11 +6,11 @@ import lombok.Data;
 @Data
 public class PostDto {
     Long pId;
-//    String title;
-//    String content;
-//    String nickname;
-//    Long person;
-//    String category;
-//    String createdAt;
-//    Long type;
+    String title;
+    String content;
+    String nickname;
+    Long person;
+    String category;
+    String date;
+    Long type;
 }

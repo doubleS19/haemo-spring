@@ -1,6 +1,7 @@
 package com.example.haemo.haemo.Controller;
 
 import com.example.haemo.haemo.Data.Post;
+import com.example.haemo.haemo.Data.PostDto;
 import com.example.haemo.haemo.Data.User;
 import com.example.haemo.haemo.Repository.PostRepository;
 import com.example.haemo.haemo.Service.PostService;
@@ -58,14 +59,30 @@ public class PostController {
     }
 
     @GetMapping("/24hours")
-    public List<Post> get24HoursPosts() {
+    public List<PostDto> get24HoursPosts() {
         LocalDateTime currentDateTime = LocalDateTime.now();
         LocalDateTime twentyFourHoursAgo = currentDateTime.minusHours(24);
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd HH시");
         String formattedTwentyFourHoursAgo = twentyFourHoursAgo.format(formatter);
 
-        return postService.getPostsAfterDate(formattedTwentyFourHoursAgo);
+        List<Post> posts = postService.getPostsAfterDate(formattedTwentyFourHoursAgo);
+
+        List<PostDto> postResponses = new ArrayList<>();
+        for (Post post : posts) {
+            PostDto postResponse = new PostDto();
+            postResponse.setPId(post.getPId());
+            postResponse.setNickname(post.getNickname());
+            postResponse.setTitle(post.getTitle());
+            postResponse.setContent(post.getContent());
+            postResponse.setPerson(post.getPerson());
+            postResponse.setCategory(post.getCategory());
+            postResponse.setDate(post.getDate());
+            postResponse.setType(post.getType());
+
+            postResponses.add(postResponse);
+        }
+        return postResponses;
     }
 
 
