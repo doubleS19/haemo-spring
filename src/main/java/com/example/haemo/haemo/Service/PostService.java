@@ -32,9 +32,9 @@ public class PostService {
         return postRepository.save(post);
     }
 
-    public List<Post> getPostsAfterDate(String date) {
-        return postRepository.findByDateAfter(date);
-    }
+//    public List<Post> getPostsAfterDate(String date) {
+//        return postRepository.findByDateAfter(date);
+//    }
 
 //    public List<PostDto> allCashBoardEntity(){
 //        return exec();

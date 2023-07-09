@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -59,30 +60,18 @@ public class PostController {
     }
 
     @GetMapping("/24hours")
-    public List<PostDto> get24HoursPosts() {
-        LocalDateTime currentDateTime = LocalDateTime.now();
-        LocalDateTime twentyFourHoursAgo = currentDateTime.minusHours(24);
+    public List<Post> get24HoursPosts() {
+        LocalDateTime twentyFourHoursAgo = LocalDateTime.now().minusHours(24);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시");
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd HH시");
-        String formattedTwentyFourHoursAgo = twentyFourHoursAgo.format(formatter);
+        List<Post> recentPosts = postRepository.findAll().stream()
+                .filter(post -> {
+                    LocalDateTime postDate = LocalDateTime.parse(post.getDate(), formatter);
+                    return postDate.isAfter(twentyFourHoursAgo);
+                })
+                .collect(Collectors.toList());
 
-        List<Post> posts = postService.getPostsAfterDate(formattedTwentyFourHoursAgo);
-
-        List<PostDto> postResponses = new ArrayList<>();
-        for (Post post : posts) {
-            PostDto postResponse = new PostDto();
-            postResponse.setPId(post.getPId());
-            postResponse.setNickname(post.getNickname());
-            postResponse.setTitle(post.getTitle());
-            postResponse.setContent(post.getContent());
-            postResponse.setPerson(post.getPerson());
-            postResponse.setCategory(post.getCategory());
-            postResponse.setDate(post.getDate());
-            postResponse.setType(post.getType());
-
-            postResponses.add(postResponse);
-        }
-        return postResponses;
+        return recentPosts;
     }
 
 
