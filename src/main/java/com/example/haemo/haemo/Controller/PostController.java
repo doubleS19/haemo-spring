@@ -37,7 +37,7 @@ public class PostController {
 
     @GetMapping(produces = "application/json")
     @ResponseBody
-    public List<Post> getAllPost(){
+    public List<Post> getAllPost() {
         return postRepository.findAll();
     }
 
@@ -50,7 +50,7 @@ public class PostController {
 
     @GetMapping("postUser/{id}")
     @ResponseBody
-    public User getUserByPost(@PathVariable Long id){
+    public User getUserByPost(@PathVariable Long id) {
         Post post = getPostById(id).getBody();
         assert post != null;
         String userNick = post.getNickname();
@@ -59,62 +59,28 @@ public class PostController {
         return user;
     }
 
+//
+//    public List<Post> get24HoursPosts() {
+//        LocalDateTime twentyFourHoursLeft = LocalDateTime.now().plusHours(24);
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시");
+//
+//        List<Post> recentPosts = postRepository.findAll().stream()
+//                .filter(post -> {
+//                    LocalDateTime postDate = LocalDateTime.parse(post.getDate(), formatter);
+//                    return postDate.isAfter(twentyFourHoursLeft);
+//                })
+//                .collect(Collectors.toList());
+//
+//        return recentPosts;
+//    }
+
     @GetMapping("/24hours")
     public List<Post> get24HoursPosts() {
-        LocalDateTime twentyFourHoursAgo = LocalDateTime.now().minusHours(24);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시");
+        LocalDateTime currentTime = LocalDateTime.now();
+        LocalDateTime twentyFourHoursLater = currentTime.plusHours(24);
 
-        List<Post> recentPosts = postRepository.findAll().stream()
-                .filter(post -> {
-                    LocalDateTime postDate = LocalDateTime.parse(post.getDate(), formatter);
-                    return postDate.isAfter(twentyFourHoursAgo);
-                })
-                .collect(Collectors.toList());
+        List<Post> posts = postService.getPostsAfterTime(currentTime, twentyFourHoursLater);
 
-        return recentPosts;
+        return posts;
     }
-
-
-//    @GetMapping("/filtered-posts")
-//    public List<Post> getFilteredPosts() {
-//        Date currentDate = new Date();
-//        Calendar calendar = Calendar.getInstance();
-//        calendar.add(Calendar.DAY_OF_YEAR, 1);
-//        Date tomorrowDate = calendar.getTime();
-//
-//        List<Post> allPosts = postRepository.findAll();
-//        List<Post> filteredPosts = filterPostsByDate(allPosts, currentDate, tomorrowDate);
-//
-//        return filteredPosts;
-//    }
-//
-//    private List<Post> filterPostsByDate(List<Post> posts, Date currentDate, Date tomorrowDate) {
-//        List<Post> filteredPosts = new ArrayList<>();
-//
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy년 MM월 dd일 hh시");
-//
-//        for (Post post : posts) {
-//            String postDateString = post.getDate(); // 게시물의 날짜를 문자열로 가져옴
-//            try {
-//                Date postDate = dateFormat.parse(postDateString);
-//
-//                if (postDate.after(currentDate) && postDate.before(tomorrowDate)) {
-//                    filteredPosts.add(post);
-//                }
-//            } catch (Exception e) {
-//                // 예외 처리
-//            }
-//        }
-//
-//        return filteredPosts;
-//    }
-
-//    @PostMapping
-//    @ResponseBody
-//    public ResponseEntity<Post> getPostById(@RequestBody PostDto postDto) {
-//        Post post = new Post();
-//            Optional<Post> postOptional = postRepository.findById(postDto.getPId());
-//            return postOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-//
-//    }
 }

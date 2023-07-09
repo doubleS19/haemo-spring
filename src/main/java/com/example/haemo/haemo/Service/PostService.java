@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -30,6 +33,30 @@ public class PostService {
 
     public Post savePost(Post post) {
         return postRepository.save(post);
+    }
+
+    public List<Post> getPostsAfterTime(LocalDateTime startTime, LocalDateTime endTime) {
+        List<Post> allPosts = postRepository.findAll();
+        List<Post> postsAfterTime = new ArrayList<>();
+
+        for (Post post : allPosts) {
+            LocalDateTime postDate = convertStringToDate(post.getDate());
+            if (postDate != null && postDate.isAfter(startTime) && postDate.isBefore(endTime)) {
+                postsAfterTime.add(post);
+            }
+        }
+
+        return postsAfterTime;
+    }
+
+    private LocalDateTime convertStringToDate(String dateString) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시");
+        try {
+            return LocalDateTime.parse(dateString, formatter);
+        } catch (DateTimeParseException e) {
+            // Handle the exception or return null as per your requirement
+            return null;
+        }
     }
 
 //    public List<Post> getPostsAfterDate(String date) {
