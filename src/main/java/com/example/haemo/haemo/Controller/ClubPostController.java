@@ -45,7 +45,7 @@ public class ClubPostController {
         return postOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @GetMapping("postUser/{id}")
+    @GetMapping("clubPostUser/{id}")
     @ResponseBody
     public User getUserByClubPost(@PathVariable Long id) {
         ClubPost post = getClubPostById(id).getBody();
