@@ -1,14 +1,15 @@
-package com.example.haemo.haemo.Controller;
+package com.example.haemo.haemo.Controller.Club;
 
-import com.example.haemo.haemo.Data.ClubPost;
-import com.example.haemo.haemo.Data.User;
+import com.example.haemo.haemo.Controller.User.UserController;
+import com.example.haemo.haemo.Data.ClubPost.ClubPost;
+import com.example.haemo.haemo.Data.User.User;
 import com.example.haemo.haemo.Repository.ClubPostRepository;
 import com.example.haemo.haemo.Service.ClubPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.time.LocalDateTime;
+
 import java.util.List;
 import java.util.Optional;
 

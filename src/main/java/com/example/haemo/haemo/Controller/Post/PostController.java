@@ -1,19 +1,16 @@
-package com.example.haemo.haemo.Controller;
+package com.example.haemo.haemo.Controller.Post;
 
-import com.example.haemo.haemo.Data.Post;
-import com.example.haemo.haemo.Data.PostDto;
-import com.example.haemo.haemo.Data.User;
+import com.example.haemo.haemo.Controller.User.UserController;
+import com.example.haemo.haemo.Data.Post.Post;
+import com.example.haemo.haemo.Data.User.User;
 import com.example.haemo.haemo.Repository.PostRepository;
 import com.example.haemo.haemo.Service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.stream.Collectors;
 
 
 @RestController

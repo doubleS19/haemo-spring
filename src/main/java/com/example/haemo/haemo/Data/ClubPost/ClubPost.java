@@ -1,4 +1,4 @@
-package com.example.haemo.haemo.Data;
+package com.example.haemo.haemo.Data.ClubPost;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

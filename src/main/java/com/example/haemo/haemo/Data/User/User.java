@@ -1,4 +1,4 @@
-package com.example.haemo.haemo.Data;
+package com.example.haemo.haemo.Data.User;
 
 import jakarta.persistence.*;
 import jakarta.websocket.server.ServerEndpoint;

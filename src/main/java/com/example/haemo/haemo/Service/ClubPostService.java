@@ -1,15 +1,9 @@
 package com.example.haemo.haemo.Service;
 
-import com.example.haemo.haemo.Data.ClubPost;
+import com.example.haemo.haemo.Data.ClubPost.ClubPost;
 import com.example.haemo.haemo.Repository.ClubPostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class ClubPostService {

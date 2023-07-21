@@ -1,6 +1,6 @@
-package com.example.haemo.haemo.Controller;
+package com.example.haemo.haemo.Controller.User;
 
-import com.example.haemo.haemo.Data.User;
+import com.example.haemo.haemo.Data.User.User;
 import com.example.haemo.haemo.Repository.UserRepository;
 import com.example.haemo.haemo.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
