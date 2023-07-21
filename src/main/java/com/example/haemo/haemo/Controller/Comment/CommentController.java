@@ -10,11 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 
 @RestController
@@ -24,8 +21,12 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
 
+    private final CommentRepository commentRepository;
+
     @Autowired
-    private CommentRepository commentRepository;
+    public CommentController(CommentRepository commentRepository) {
+        this.commentRepository = commentRepository;
+    }
 
     @Autowired
     private UserController userController;
@@ -43,20 +44,10 @@ public class CommentController {
         return commentById.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/commentPost/{pid}")
+    @GetMapping("commentPost/{pId}")
     @ResponseBody
-    public List<Comment> getAllCommentByPId(@PathVariable Long pId) {
-        List<Comment> commentList = commentRepository.findAll();
-        List<Comment> wantedComment = new ArrayList<>();
-
-        for (Comment comment : commentList){
-            Long commentPId = comment.getPId();
-            if (commentPId.equals(pId)){
-                wantedComment.add(comment);
-            }
-        }
-
-        return wantedComment;
+    public List<Comment> getCommentsByPId(@PathVariable Long pId) {
+        return commentRepository.findAllBypId(pId);
     }
 
     @GetMapping("commentUser/{id}")
