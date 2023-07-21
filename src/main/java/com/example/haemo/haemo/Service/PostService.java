@@ -4,7 +4,7 @@ import com.example.haemo.haemo.Controller.PostController;
 import com.example.haemo.haemo.Data.Post;
 import com.example.haemo.haemo.Data.PostDto;
 import com.example.haemo.haemo.Repository.PostRepository;
-import org.springframework.beans.factory.annotation.Autowired;가
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
