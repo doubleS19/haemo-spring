@@ -1,4 +1,4 @@
-package com.example.haemo.haemo.Data;
+package com.example.haemo.haemo.Data.Comment;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,12 +7,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "command")
+@Table(name = "comment")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Command {
+public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cId")
