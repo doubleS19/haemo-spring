@@ -12,4 +12,5 @@ public class PostDto {
     Long person;
     String category;
     String date;
+    String deadline;
 }

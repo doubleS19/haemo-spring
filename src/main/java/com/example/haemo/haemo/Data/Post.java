@@ -36,6 +36,9 @@ public class Post {
     @Column(name = "category")
     private String category;
 
+    @Column(name = "deadline")
+    private String deadline;
+
     @Column(name = "date")
     private String date;
 }

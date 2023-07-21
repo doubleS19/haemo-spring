@@ -1,9 +1,10 @@
 package com.example.haemo.haemo.Service;
 
+import com.example.haemo.haemo.Controller.PostController;
 import com.example.haemo.haemo.Data.Post;
 import com.example.haemo.haemo.Data.PostDto;
 import com.example.haemo.haemo.Repository.PostRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;가
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,10 @@ public class PostService {
     @Autowired
     PostRepository postRepository;
 
+    @Autowired
+    PostController postController;
+
+
     public PostService(PostRepository postRepository) {
         this.postRepository = postRepository;
 
@@ -40,7 +45,7 @@ public class PostService {
         List<Post> postsAfterTime = new ArrayList<>();
 
         for (Post post : allPosts) {
-            LocalDateTime postDate = convertStringToDate(post.getDate());
+            LocalDateTime postDate = convertStringToDate(post.getDeadline());
             if (postDate != null && postDate.isAfter(startTime) && postDate.isBefore(endTime)) {
                 postsAfterTime.add(post);
             }
@@ -58,6 +63,10 @@ public class PostService {
             return null;
         }
     }
+
+//    private List<Post> getSortedPostByDate(){
+//
+//    }
 
 //    public List<Post> getPostsAfterDate(String date) {
 //        return postRepository.findByDateAfter(date);
