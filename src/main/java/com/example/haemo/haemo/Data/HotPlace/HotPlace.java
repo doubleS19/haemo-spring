@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @Entity
 @Table(name = "hotPlace")
@@ -26,4 +29,13 @@ public class HotPlace {
 
     @Column(name = "nickname")
     private String nickname;
+
+    @Column(name = "address")
+    private String address;
+
+    @Column(name="date")
+    private String date;
+
+    @Column(name="images")
+    private List<MultipartFile> images;
 }
