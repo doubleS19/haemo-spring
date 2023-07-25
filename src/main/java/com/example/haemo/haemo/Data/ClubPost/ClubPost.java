@@ -34,6 +34,6 @@ public class ClubPost {
     @Column(name = "category")
     private String category;
 
-    @Column(name = "logo")
-    private MultipartFile logo;
+//    @Column(name = "logo")
+//    private MultipartFile logo;
 }

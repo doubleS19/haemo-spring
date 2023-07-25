@@ -13,5 +13,5 @@ public class HotPlaceDto {
     String nickname;
     String address;
     String date;
-    List<MultipartFile> images;
+//    List<MultipartFile> images;
 }

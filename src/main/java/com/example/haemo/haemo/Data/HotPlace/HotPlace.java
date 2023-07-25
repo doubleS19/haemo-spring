@@ -36,6 +36,6 @@ public class HotPlace {
     @Column(name="date")
     private String date;
 
-    @Column(name="images")
-    private List<MultipartFile> images;
+//    @Column(name="images")
+//    private List<MultipartFile> images;
 }

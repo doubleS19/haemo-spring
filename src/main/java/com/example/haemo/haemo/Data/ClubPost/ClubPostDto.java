@@ -11,5 +11,5 @@ public class ClubPostDto {
     String nickname;
     Long person;
     String category;
-    MultipartFile logo;
+//    MultipartFile logo;
 }
