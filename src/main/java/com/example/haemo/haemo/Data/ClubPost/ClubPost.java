@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name = "clubPost")
@@ -32,4 +33,7 @@ public class ClubPost {
 
     @Column(name = "category")
     private String category;
+
+    @Column(name = "logo")
+    private MultipartFile logo;
 }
