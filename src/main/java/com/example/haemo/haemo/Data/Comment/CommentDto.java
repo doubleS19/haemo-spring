@@ -9,4 +9,5 @@ public class CommentDto {
     String nickname;
     Long pId;
     String date;
+    Long type;
 }
