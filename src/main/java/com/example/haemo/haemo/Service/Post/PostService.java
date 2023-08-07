@@ -1,7 +1,7 @@
-package com.example.haemo.haemo.Service;
+package com.example.haemo.haemo.Service.Post;
 
 import com.example.haemo.haemo.Data.Post.Post;
-import com.example.haemo.haemo.Repository.PostRepository;
+import com.example.haemo.haemo.Repository.Post.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

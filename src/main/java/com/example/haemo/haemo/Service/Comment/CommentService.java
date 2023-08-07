@@ -1,7 +1,7 @@
-package com.example.haemo.haemo.Service;
+package com.example.haemo.haemo.Service.Comment;
 
 import com.example.haemo.haemo.Data.Comment.Comment;
-import com.example.haemo.haemo.Repository.CommentRepository;
+import com.example.haemo.haemo.Repository.Comment.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

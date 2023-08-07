@@ -1,7 +1,7 @@
-package com.example.haemo.haemo.Service;
+package com.example.haemo.haemo.Service.ClubPost;
 
 import com.example.haemo.haemo.Data.ClubPost.ClubPost;
-import com.example.haemo.haemo.Repository.ClubPostRepository;
+import com.example.haemo.haemo.Repository.ClubPost.ClubPostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

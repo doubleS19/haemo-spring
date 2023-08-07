@@ -1,11 +1,7 @@
 package com.example.haemo.haemo.Controller.WishList;
 
-import com.example.haemo.haemo.Data.Comment.Comment;
-import com.example.haemo.haemo.Data.User.User;
 import com.example.haemo.haemo.Data.WishList.WishList;
-import com.example.haemo.haemo.Repository.UserRepository;
 import com.example.haemo.haemo.Repository.WishList.WishListRepository;
-import com.example.haemo.haemo.Service.UserService;
 import com.example.haemo.haemo.Service.WishList.WishListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

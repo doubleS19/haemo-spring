@@ -1,8 +1,8 @@
 package com.example.haemo.haemo.Controller.User;
 
 import com.example.haemo.haemo.Data.User.User;
-import com.example.haemo.haemo.Repository.UserRepository;
-import com.example.haemo.haemo.Service.UserService;
+import com.example.haemo.haemo.Repository.User.UserRepository;
+import com.example.haemo.haemo.Service.User.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

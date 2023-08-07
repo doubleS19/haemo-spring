@@ -1,13 +1,9 @@
 package com.example.haemo.haemo.Controller.HotPlace;
 
 import com.example.haemo.haemo.Controller.User.UserController;
-import com.example.haemo.haemo.Data.ClubPost.ClubPost;
 import com.example.haemo.haemo.Data.HotPlace.HotPlace;
-import com.example.haemo.haemo.Data.HotPlace.HotPlaceDto;
 import com.example.haemo.haemo.Data.User.User;
-import com.example.haemo.haemo.Repository.ClubPostRepository;
 import com.example.haemo.haemo.Repository.HotPlace.HotPlaceRepository;
-import com.example.haemo.haemo.Service.ClubPostService;
 import com.example.haemo.haemo.Service.HotPlace.HotPlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

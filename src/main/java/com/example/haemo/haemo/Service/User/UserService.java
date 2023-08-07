@@ -1,7 +1,7 @@
-package com.example.haemo.haemo.Service;
+package com.example.haemo.haemo.Service.User;
 
 import com.example.haemo.haemo.Data.User.User;
-import com.example.haemo.haemo.Repository.UserRepository;
+import com.example.haemo.haemo.Repository.User.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 @Service

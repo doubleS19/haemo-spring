@@ -1,4 +1,4 @@
-package com.example.haemo.haemo.Repository;
+package com.example.haemo.haemo.Repository.Post;
 
 import com.example.haemo.haemo.Data.Post.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
