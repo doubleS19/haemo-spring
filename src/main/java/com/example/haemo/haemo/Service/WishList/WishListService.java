@@ -25,13 +25,6 @@ public class WishListService {
     }
 
     public void deleteWish(Long uId, Long pId) {
-        List<WishList> allWish = wishListRepository.findAllByuId(uId);
-
-        for (WishList wish : allWish) {
-            if (wish.getPId().equals(pId)) {
-                wishListRepository.deleteById(wish.getWId());
-                break;
-            }
-        }
+        wishListRepository.deleteByUIdAndPId(uId, pId);
     }
 }

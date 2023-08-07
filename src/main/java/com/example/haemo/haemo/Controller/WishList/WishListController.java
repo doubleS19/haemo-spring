@@ -26,11 +26,14 @@ public class WishListController {
         return new ResponseEntity<>(savedWish, HttpStatus.CREATED);
     }
 
-    @PostMapping(produces = "application/json")
-    public void deleteWishList(@RequestBody Long uId, @RequestBody Long pId) {
+    @DeleteMapping("/{uId}/{pId}")
+    public ResponseEntity<String> deleteWishList(
+            @PathVariable Long uId,
+            @PathVariable Long pId
+    ) {
         wishListService.deleteWish(uId, pId);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-
     @GetMapping("myList/{uId}")
     @ResponseBody
     public List<WishList> getWishListByUId(@PathVariable Long uId) {
