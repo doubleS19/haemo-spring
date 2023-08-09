@@ -1,5 +1,6 @@
 package com.example.haemo.haemo.Controller.WishList;
 
+import com.example.haemo.haemo.Data.Post.Post;
 import com.example.haemo.haemo.Data.WishList.WishList;
 import com.example.haemo.haemo.Repository.WishList.WishListRepository;
 import com.example.haemo.haemo.Service.WishList.WishListService;
@@ -20,23 +21,27 @@ public class WishListController {
     @Autowired
     private WishListRepository wishListRepository;
 
+    @GetMapping(produces = "application/json")
+    @ResponseBody
+    public List<WishList> getAllWishList() {
+        return wishListRepository.findAll();
+    }
+
     @PostMapping(produces = "application/json")
     public ResponseEntity<WishList> addWishList(@RequestBody WishList wishList) {
         WishList savedWish = wishListService.addWish(wishList);
         return new ResponseEntity<>(savedWish, HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/{uId}/{pId}")
-    public ResponseEntity<String> deleteWishList(
-            @PathVariable Long uId,
-            @PathVariable Long pId
-    ) {
+    @DeleteMapping("/delete/{uId}/{pId}")
+    public ResponseEntity<String> deleteWishList(@PathVariable Long uId, @PathVariable Long pId) {
         wishListService.deleteWish(uId, pId);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
+
     @GetMapping("myList/{uId}")
     @ResponseBody
     public List<WishList> getWishListByUId(@PathVariable Long uId) {
-        return wishListRepository.findAllByuId(uId);
+        return wishListRepository.findAllByUId(uId);
     }
 }

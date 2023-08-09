@@ -20,8 +20,8 @@ public class WishList {
 
 
     @Column(name = "uId")
-    private Long uId;
+    private Long UId;
 
     @Column(name = "pId")
-    private Long pId;
+    private Long PId;
 }
