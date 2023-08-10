@@ -33,7 +33,7 @@ public class WishListController {
         return new ResponseEntity<>(savedWish, HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/delete/{uId}/{pId}")
+    @DeleteMapping("delete/{uId}/{pId}")
     public ResponseEntity<String> deleteWishList(@PathVariable Long uId, @PathVariable Long pId) {
         wishListService.deleteWish(uId, pId);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
