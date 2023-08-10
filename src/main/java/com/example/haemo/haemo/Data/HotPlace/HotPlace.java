@@ -1,10 +1,7 @@
 package com.example.haemo.haemo.Data.HotPlace;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -35,6 +32,9 @@ public class HotPlace {
 
     @Column(name="date")
     private String date;
+
+    @Column(name="wishing")
+    private Long wishing;
 
 //    @Column(name="images")
 //    private List<MultipartFile> images;

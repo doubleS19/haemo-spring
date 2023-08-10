@@ -19,6 +19,10 @@ public class HotPlaceService {
         return hotPlaceRepository.save(post);
     }
 
+    public HotPlace getHotPlaceById(Long pId){
+        return hotPlaceRepository.getReferenceById(pId);
+    }
+
 
 //    public List<Post> getPostsAfterDate(String date) {
 //        return postRepository.findByDateAfter(date);

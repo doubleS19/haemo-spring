@@ -13,5 +13,6 @@ public class HotPlaceDto {
     String nickname;
     String address;
     String date;
+    Long wishing;
 //    List<MultipartFile> images;
 }

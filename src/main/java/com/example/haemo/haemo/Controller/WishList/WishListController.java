@@ -1,8 +1,11 @@
 package com.example.haemo.haemo.Controller.WishList;
 
+import com.example.haemo.haemo.Controller.HotPlace.HotPlaceController;
+import com.example.haemo.haemo.Data.HotPlace.HotPlace;
 import com.example.haemo.haemo.Data.Post.Post;
 import com.example.haemo.haemo.Data.WishList.WishList;
 import com.example.haemo.haemo.Repository.WishList.WishListRepository;
+import com.example.haemo.haemo.Service.HotPlace.HotPlaceService;
 import com.example.haemo.haemo.Service.WishList.WishListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +24,9 @@ public class WishListController {
     @Autowired
     private WishListRepository wishListRepository;
 
+    @Autowired
+    private HotPlaceService hotPlaceService;
+
     @GetMapping(produces = "application/json")
     @ResponseBody
     public List<WishList> getAllWishList() {
@@ -30,6 +36,8 @@ public class WishListController {
     @PostMapping(produces = "application/json")
     public ResponseEntity<WishList> addWishList(@RequestBody WishList wishList) {
         WishList savedWish = wishListService.addWish(wishList);
+        HotPlace wishedPlace = hotPlaceService.getHotPlaceById(savedWish.getPId());
+        wishedPlace.setWishing(wishedPlace.getWishing()+1);
         return new ResponseEntity<>(savedWish, HttpStatus.CREATED);
     }
 
