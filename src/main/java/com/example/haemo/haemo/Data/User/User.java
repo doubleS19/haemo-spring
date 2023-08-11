@@ -31,4 +31,7 @@ public class User {
 
     @Column(name = "gender")
     private String gender;
+
+    @Column(name = "userImage")
+    private String user_image;
 }
