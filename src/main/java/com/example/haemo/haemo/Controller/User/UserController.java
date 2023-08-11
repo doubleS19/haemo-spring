@@ -42,9 +42,9 @@ public class UserController {
     }
 
 
-    @GetMapping("/{id}")
+    @GetMapping("find/{id}")
     @ResponseBody
-    public ResponseEntity<User> getHotPlaceById(@PathVariable Long id) {
+    public ResponseEntity<User> getUserById(@PathVariable Long id) {
         Optional<User> postOptional = userRepository.findById(id);
         return postOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
