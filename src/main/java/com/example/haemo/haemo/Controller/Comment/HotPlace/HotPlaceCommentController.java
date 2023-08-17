@@ -47,10 +47,10 @@ public class HotPlaceCommentController {
         return commentById.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @GetMapping("commentPost/{pId}")
+    @GetMapping("commentPost/{hpId}")
     @ResponseBody
-    public List<HotPlaceComment> getCommentsByPId(@PathVariable Long pId) {
-        return commentRepository.findAllBypId(pId);
+    public List<HotPlaceComment> getCommentsByHpId(@PathVariable Long hpId) {
+        return commentRepository.findAllByHpId(hpId);
     }
 
     @GetMapping("commentUser/{id}")

@@ -25,7 +25,7 @@ public class ClubComment {
     private String nickname;
 
     @Column(name = "cpId")
-    private Long pId;
+    private Long cpId;
 
     @Column(name = "date")
     private String date;

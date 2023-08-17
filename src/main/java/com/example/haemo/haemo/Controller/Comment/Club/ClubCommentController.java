@@ -47,10 +47,10 @@ public class ClubCommentController {
         return commentById.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @GetMapping("commentPost/{pId}")
+    @GetMapping("commentPost/{cpId}")
     @ResponseBody
-    public List<ClubComment> getCommentsByPId(@PathVariable Long pId) {
-        return commentRepository.findAllBypId(pId);
+    public List<ClubComment> getCommentsByCpId(@PathVariable Long cpId) {
+        return commentRepository.findAllByCpId(cpId);
     }
 
     @GetMapping("commentUser/{id}")

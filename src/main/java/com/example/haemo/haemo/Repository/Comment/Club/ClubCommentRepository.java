@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ClubCommentRepository extends JpaRepository<ClubComment, Long> {
-    List<ClubComment> findAllBypId(Long pId);
+    List<ClubComment> findAllByCpId(Long pId);
 }

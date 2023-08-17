@@ -25,7 +25,7 @@ public class HotPlaceComment {
     private String nickname;
 
     @Column(name = "hpId")
-    private Long pId;
+    private Long hpId;
 
     @Column(name = "date")
     private String date;

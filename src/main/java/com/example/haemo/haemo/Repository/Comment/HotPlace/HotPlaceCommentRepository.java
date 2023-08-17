@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface HotPlaceCommentRepository extends JpaRepository<HotPlaceComment, Long> {
-    List<HotPlaceComment> findAllBypId(Long pId);
+    List<HotPlaceComment> findAllByHpId(Long pId);
 }
