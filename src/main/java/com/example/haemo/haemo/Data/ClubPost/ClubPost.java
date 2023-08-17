@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class ClubPost {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pId")
+    @Column(name = "cpId")
     private Long pId;
 
     @Column(name = "title")

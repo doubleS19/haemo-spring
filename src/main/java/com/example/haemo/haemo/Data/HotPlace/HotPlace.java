@@ -15,7 +15,7 @@ import java.util.List;
 public class HotPlace {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pId")
+    @Column(name = "hpId")
     private Long pId;
 
     @Column(name = "title")
