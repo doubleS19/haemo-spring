@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface WishListRepository extends JpaRepository<WishList, Long> {
     List<WishList> findAllByUId(Long pId);
-    void deleteByUIdAndPId(Long uId, Long pId);
+    void deleteByUIdAndHpId(Long uId, Long pId);
+    List<WishList> findByUId(Long userId);
 }

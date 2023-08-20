@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class WishListService {
@@ -25,6 +26,12 @@ public class WishListService {
     }
 
     public void deleteWish(Long uId, Long pId) {
-        wishListRepository.deleteByUIdAndPId(uId, pId);
+        wishListRepository.deleteByUIdAndHpId(uId, pId);
+    }
+
+    public List<Long> getUserWishList(Long userId) {
+        List<WishList> userWishList = wishListRepository.findByUId(userId);
+        List<Long> pIdList = userWishList.stream().map(WishList::getHpId).collect(Collectors.toList());
+        return pIdList;
     }
 }

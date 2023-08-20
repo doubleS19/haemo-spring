@@ -22,6 +22,6 @@ public class WishList {
     @Column(name = "uId")
     private Long UId;
 
-    @Column(name = "pId")
-    private Long PId;
+    @Column(name = "hpId")
+    private Long hpId;
 }

@@ -39,7 +39,7 @@ public class WishListController {
     @PostMapping(produces = "application/json")
     public ResponseEntity<WishList> addWishList(@RequestBody WishList wishList) {
         WishList savedWish = wishListService.addWish(wishList);
-        HotPlace wishedPlace = hotPlaceService.getHotPlaceById(savedWish.getPId());
+        HotPlace wishedPlace = hotPlaceService.getHotPlaceById(savedWish.getHpId());
         wishedPlace.setWishing(wishedPlace.getWishing()+1);
         hotPlaceRepository.save(wishedPlace);
         return new ResponseEntity<>(savedWish, HttpStatus.CREATED);
@@ -51,9 +51,15 @@ public class WishListController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-    @GetMapping("myList/{uId}")
-    @ResponseBody
-    public List<WishList> getWishListByUId(@PathVariable Long uId) {
-        return wishListRepository.findAllByUId(uId);
+    @GetMapping("/myList/{uId}")
+    public ResponseEntity<List<Long>> getUserWishList(@PathVariable Long uId) {
+        List<Long> wishList = wishListService.getUserWishList(uId);
+        return ResponseEntity.ok(wishList);
     }
+
+//    @GetMapping("myList/{uId}")
+//    @ResponseBody
+//    public List<WishList> getWishListByUId(@PathVariable Long uId) {
+//        return wishListRepository.findAllByUId(uId);
+//    }
 }
