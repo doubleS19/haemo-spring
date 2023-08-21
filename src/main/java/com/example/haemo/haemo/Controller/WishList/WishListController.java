@@ -2,6 +2,7 @@ package com.example.haemo.haemo.Controller.WishList;
 
 import com.example.haemo.haemo.Controller.HotPlace.HotPlaceController;
 import com.example.haemo.haemo.Data.HotPlace.HotPlace;
+import com.example.haemo.haemo.Data.HotPlace.HotPlaceDto;
 import com.example.haemo.haemo.Data.Post.Post;
 import com.example.haemo.haemo.Data.WishList.WishList;
 import com.example.haemo.haemo.Repository.HotPlace.HotPlaceRepository;
@@ -52,8 +53,9 @@ public class WishListController {
     }
 
     @GetMapping("/myList/{uId}")
-    public ResponseEntity<List<Long>> getUserWishList(@PathVariable Long uId) {
-        List<Long> wishList = wishListService.getUserWishList(uId);
+    public ResponseEntity<List<HotPlace>> getUserWishList(@PathVariable Long uId) {
+        List<HotPlace> wishList = wishListService.getUserWishList(uId);
+
         return ResponseEntity.ok(wishList);
     }
 

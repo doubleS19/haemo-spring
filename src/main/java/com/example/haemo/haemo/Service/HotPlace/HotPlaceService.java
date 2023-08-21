@@ -4,6 +4,8 @@ import com.example.haemo.haemo.Repository.HotPlace.HotPlaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class HotPlaceService {
 
@@ -23,6 +25,9 @@ public class HotPlaceService {
         return hotPlaceRepository.getReferenceById(pId);
     }
 
+    public List<HotPlace> getHotPlacesByPIds(List<Long> pIds) {
+        return hotPlaceRepository.findByHpIdIn(pIds);
+    }
 
 //    public List<Post> getPostsAfterDate(String date) {
 //        return postRepository.findByDateAfter(date);

@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 public class HotPlaceDto {
-    Long pId;
+    Long hpId;
     String title;
     String content;
     String nickname;

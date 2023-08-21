@@ -16,7 +16,7 @@ public class HotPlace {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "hpId")
-    private Long pId;
+    private Long hpId;
 
     @Column(name = "title")
     private String title;

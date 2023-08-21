@@ -1,7 +1,10 @@
 package com.example.haemo.haemo.Service.WishList;
 
+import com.example.haemo.haemo.Data.HotPlace.HotPlace;
+import com.example.haemo.haemo.Data.HotPlace.HotPlaceDto;
 import com.example.haemo.haemo.Data.Post.Post;
 import com.example.haemo.haemo.Data.WishList.WishList;
+import com.example.haemo.haemo.Repository.HotPlace.HotPlaceRepository;
 import com.example.haemo.haemo.Repository.WishList.WishListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +20,9 @@ public class WishListService {
     @Autowired
     WishListRepository wishListRepository;
 
+    @Autowired
+    HotPlaceRepository hotPlaceRepository;
+
     public WishListService(WishListRepository wishListRepository) {
         this.wishListRepository = wishListRepository;
     }
@@ -29,9 +35,10 @@ public class WishListService {
         wishListRepository.deleteByUIdAndHpId(uId, pId);
     }
 
-    public List<Long> getUserWishList(Long userId) {
-        List<WishList> userWishList = wishListRepository.findByUId(userId);
+    public List<HotPlace> getUserWishList(Long uId) {
+        List<WishList> userWishList = wishListRepository.findByUId(uId);
         List<Long> pIdList = userWishList.stream().map(WishList::getHpId).collect(Collectors.toList());
-        return pIdList;
+        List<HotPlace> hotPlaceList = hotPlaceRepository.findByHpIdIn(pIdList);
+        return hotPlaceList;
     }
 }
