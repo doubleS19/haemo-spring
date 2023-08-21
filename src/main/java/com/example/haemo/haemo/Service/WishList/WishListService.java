@@ -32,9 +32,6 @@ public class WishListService {
     }
 
     public WishList addWish(WishList wish) {
-        HotPlace wishedPlace = hotPlaceService.getHotPlaceById(wish.getHpId());
-        wishedPlace.setWishing(wishedPlace.getWishing()+1);
-        hotPlaceRepository.save(wishedPlace);
         return wishListRepository.save(wish);
     }
 
@@ -43,9 +40,6 @@ public class WishListService {
         for(WishList wish : wishList){
             if (wish.getHpId().equals(hpId)){
                 wishListRepository.delete(wish);
-                HotPlace deletedPlace = hotPlaceService.getHotPlaceById(wish.getHpId());
-                deletedPlace.setWishing(deletedPlace.getWishing()-1);
-                hotPlaceRepository.save(deletedPlace);
                 break;
             }
         }
