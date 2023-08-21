@@ -40,15 +40,12 @@ public class WishListController {
     @PostMapping(produces = "application/json")
     public ResponseEntity<WishList> addWishList(@RequestBody WishList wishList) {
         WishList savedWish = wishListService.addWish(wishList);
-        HotPlace wishedPlace = hotPlaceService.getHotPlaceById(savedWish.getHpId());
-        wishedPlace.setWishing(wishedPlace.getWishing()+1);
-        hotPlaceRepository.save(wishedPlace);
         return new ResponseEntity<>(savedWish, HttpStatus.CREATED);
     }
 
-    @DeleteMapping("delete/{uId}/{pId}")
-    public ResponseEntity<String> deleteWishList(@PathVariable Long uId, @PathVariable Long pId) {
-        wishListService.deleteWish(uId, pId);
+    @DeleteMapping(value = "/delete", produces = "application/json")
+    public ResponseEntity<String> deleteWishList(@RequestBody WishList wishList) {
+        wishListService.deleteWish(wishList.getUId(), wishList.getHpId());
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
