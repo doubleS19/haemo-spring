@@ -48,4 +48,9 @@ public class UserController {
         Optional<User> postOptional = userRepository.findById(id);
         return postOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
-}
+
+    @GetMapping("isDuplicate/{nickname}")
+    public ResponseEntity<Boolean> checkNicknameDuplicate(@PathVariable String nickname)
+    {
+        return ResponseEntity.ok(userService.checkNicknameDuplicate(nickname));
+    }}
