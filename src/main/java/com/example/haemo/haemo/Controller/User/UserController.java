@@ -53,4 +53,5 @@ public class UserController {
     public ResponseEntity<Boolean> checkNicknameDuplicate(@PathVariable String nickname)
     {
         return ResponseEntity.ok(userService.checkNicknameDuplicate(nickname));
-    }}
+    }
+}

@@ -56,19 +56,4 @@ public class ClubPostController {
         User user = userController.getUserByNickname(userNick);
         return user;
     }
-
-//
-//    public List<Post> get24HoursPosts() {
-//        LocalDateTime twentyFourHoursLeft = LocalDateTime.now().plusHours(24);
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시");
-//
-//        List<Post> recentPosts = postRepository.findAll().stream()
-//                .filter(post -> {
-//                    LocalDateTime postDate = LocalDateTime.parse(post.getDate(), formatter);
-//                    return postDate.isAfter(twentyFourHoursLeft);
-//                })
-//                .collect(Collectors.toList());
-//
-//        return recentPosts;
-//    }
 }
