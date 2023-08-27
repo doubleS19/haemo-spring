@@ -43,7 +43,7 @@ public class NoticeController {
         return noticeRepository.findAll();
     }
 
-    @GetMapping(produces = "application/json")
+    @PostMapping(value = "/visibility", produces = "application/json")
     @ResponseBody
     public void changeNoticeVisible(@RequestBody Notice notice) {
         noticeService.changeNoticeVisibility(notice);
