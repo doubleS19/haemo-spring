@@ -28,7 +28,7 @@ public class Notice {
     private String md;
 
     @Column(name = "type")
-    private Long type;
+    private String type;
 
     @Column(name = "visible")
     private boolean visible;
