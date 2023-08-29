@@ -39,21 +39,19 @@ public class NoticeController {
         return noticeRepository.findAll();
     }
 
-//    @GetMapping("/visible/{nId}")
-//    @ResponseBody
-//    public Notice changeNoticeVisible(@PathVariable Long nId) {
-//        return noticeService.changeNoticeVisibility(
-//                nId
-//        );
-//    }
-
-    @PutMapping("/visible/{nId}")
-    public ResponseEntity<String> changeNoticeVisible(@PathVariable Long nId) throws ChangeSetPersister.NotFoundException {
-        // Find the notice by ID
-       noticeService.changeNoticeVisibility(nId);
-
-        return ResponseEntity.ok("Notice visibility toggled successfully");
+    @GetMapping("/visible/{nId}")
+    @ResponseBody
+    public Notice changeNoticeVisible(@PathVariable Long nId) {
+        return noticeService.changeNoticeVisibility(nId);
     }
+
+//    @PutMapping("/visible/{nId}")
+//    public ResponseEntity<String> changeNoticeVisible(@PathVariable Long nId) throws ChangeSetPersister.NotFoundException {
+//        // Find the notice by ID
+//       noticeService.changeNoticeVisibility(nId);
+//
+//        return ResponseEntity.ok("Notice visibility toggled successfully");
+//    }
 
     @GetMapping("/{id}")
     @ResponseBody

@@ -5,7 +5,6 @@ import com.example.haemo.haemo.Data.Post.Post;
 import com.example.haemo.haemo.Repository.Notice.NoticeRepository;
 import com.example.haemo.haemo.Repository.Post.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -30,10 +29,10 @@ public class NoticeService {
         return noticeRepository.save(notice);
     }
 
-    public void changeNoticeVisibility(Long nId) throws ChangeSetPersister.NotFoundException {
-        Notice notice = noticeRepository.findById(nId)
-                .orElseThrow(ChangeSetPersister.NotFoundException::new);
-        notice.setVisible(!notice.isVisible());
-        noticeRepository.save(notice);
+    public Notice changeNoticeVisibility(Long nId){
+        Notice changedNotice = noticeRepository.getReferenceById(nId);
+        changedNotice.setVisible(!changedNotice.isVisible());
+        noticeRepository.save(changedNotice);
+        return changedNotice;
     }
 }
