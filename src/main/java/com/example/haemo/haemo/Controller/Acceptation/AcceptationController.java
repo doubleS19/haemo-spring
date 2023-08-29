@@ -2,6 +2,7 @@ package com.example.haemo.haemo.Controller.Acceptation;
 
 import com.example.haemo.haemo.Controller.User.UserController;
 import com.example.haemo.haemo.Data.Acceptation.Acceptation;
+import com.example.haemo.haemo.Data.HotPlace.HotPlace;
 import com.example.haemo.haemo.Data.Notice.Notice;
 import com.example.haemo.haemo.Repository.Acceptation.AcceptationRepository;
 import com.example.haemo.haemo.Service.Acceptation.AcceptationService;
@@ -46,6 +47,11 @@ public class AcceptationController {
         return acceptationRepository.findAll();
     }
 
+    @DeleteMapping(value = "/delete/{uId}/{pId}", produces = "application/json")
+    public ResponseEntity<String> deleteWishList(@PathVariable Long uId, @PathVariable Long pId) {
+        acceptationService.cancleRequest(uId, pId);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 
     @GetMapping("/check/{uId}/{pId}")
     @ResponseBody
