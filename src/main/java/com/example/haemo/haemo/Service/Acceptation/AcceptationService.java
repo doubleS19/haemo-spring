@@ -54,6 +54,13 @@ public class AcceptationService {
 
     public Boolean checkRequestExist(Long uId, Long pId){
         List<Acceptation> wishList = acceptationRepository.findAllByuId(uId);
-        return acceptationRepository.existsBypId(pId);
+        boolean isExist = false;
+        for(Acceptation wish : wishList) {
+            if (wish.getPId().equals(pId)) {
+                isExist = true;
+                break;
+            }
+        }
+        return isExist;
     }
 }
