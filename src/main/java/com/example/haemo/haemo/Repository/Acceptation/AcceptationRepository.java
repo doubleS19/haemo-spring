@@ -7,6 +7,5 @@ import java.util.List;
 import java.util.Optional;
 
 public interface AcceptationRepository extends JpaRepository<Acceptation, Long> {
-    Acceptation findByuId(Long uId);
     List<Acceptation> findAllByuId(Long uId);
 }

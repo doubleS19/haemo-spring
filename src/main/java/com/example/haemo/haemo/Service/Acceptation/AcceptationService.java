@@ -18,11 +18,17 @@ public class AcceptationService {
         return acceptationRepository.save(acceptation);
     }
 
-    public Acceptation acceptUserToJoin(Long uId){
-        Acceptation acceptedJoin = acceptationRepository.findByuId(uId);
-        acceptedJoin.setAccept(!acceptedJoin.isAccept());
-        acceptationRepository.save(acceptedJoin);
-        return acceptedJoin;
+    public Acceptation acceptUserToJoin(Long uId, Long pId){
+        List<Acceptation> joinlist = acceptationRepository.findAllByuId(uId);
+        Acceptation acceptedReqeust = new Acceptation();
+        for(Acceptation wish : joinlist){
+            if (wish.getPId().equals(pId)){
+                wish.setAccept(!wish.isAccept());
+                acceptationRepository.save(wish);
+                acceptedReqeust = wish;
+            }
+        }
+        return acceptedReqeust;
     }
 
     public void cancleRequest(Long uId, Long pId){
@@ -33,5 +39,16 @@ public class AcceptationService {
                 break;
             }
         }
+    }
+
+    public Acceptation getAcceptationByInfo(Long uId, Long pId){
+        List<Acceptation> wishList = acceptationRepository.findAllByuId(uId);
+        Acceptation acceptedReqeust = new Acceptation();
+        for(Acceptation wish : wishList){
+            if (wish.getPId().equals(pId)){
+                acceptedReqeust = wish;
+            }
+        }
+        return acceptedReqeust;
     }
 }

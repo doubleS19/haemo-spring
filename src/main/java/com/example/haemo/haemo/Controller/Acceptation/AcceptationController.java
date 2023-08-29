@@ -33,10 +33,10 @@ public class AcceptationController {
         return new ResponseEntity<>(requestedAcceptation, HttpStatus.CREATED);
     }
 
-    @GetMapping("/accept/{uId}")
+    @GetMapping("/accept/{uId}/{pId}")
     @ResponseBody
-    public ResponseEntity<Acceptation> acceptUser(@PathVariable Long uId) {
-        Acceptation requestedAcceptation = acceptationService.acceptUserToJoin(uId);
+    public ResponseEntity<Acceptation> acceptUser(@PathVariable Long uId, @PathVariable Long pId) {
+        Acceptation requestedAcceptation = acceptationService.acceptUserToJoin(uId, pId);
         return new ResponseEntity<>(requestedAcceptation, HttpStatus.CREATED);
     }
 
@@ -47,9 +47,9 @@ public class AcceptationController {
     }
 
 
-    @GetMapping("/{id}")
+    @GetMapping("/check/{uId}/{pId}")
     @ResponseBody
-    public Acceptation getAcceptationById(@PathVariable Long id) {
-        return acceptationRepository.findByuId(id);
+    public Acceptation getAcceptationById(@PathVariable Long uId, @PathVariable Long pId) {
+        return acceptationService.getAcceptationByInfo(uId, pId);
     }
 }
