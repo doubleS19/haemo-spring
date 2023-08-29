@@ -58,4 +58,10 @@ public class AcceptationController {
     public Acceptation getAcceptationById(@PathVariable Long uId, @PathVariable Long pId) {
         return acceptationService.getAcceptationByInfo(uId, pId);
     }
+
+    @GetMapping("/isExist/{uId}/{pId}")
+    @ResponseBody
+    public Boolean checkRequestExist(@PathVariable Long uId, @PathVariable Long pId) {
+        return acceptationService.checkRequestExist(uId, pId);
+    }
 }

@@ -51,4 +51,9 @@ public class AcceptationService {
         }
         return acceptedReqeust;
     }
+
+    public Boolean checkRequestExist(Long uId, Long pId){
+        List<Acceptation> wishList = acceptationRepository.findAllByuId(uId);
+        return acceptationRepository.existsBypId(pId);
+    }
 }
