@@ -2,6 +2,7 @@ package com.example.haemo.haemo.Controller.Acceptation;
 
 import com.example.haemo.haemo.Controller.User.UserController;
 import com.example.haemo.haemo.Data.Acceptation.Acceptation;
+import com.example.haemo.haemo.Data.Notice.Notice;
 import com.example.haemo.haemo.Repository.Acceptation.AcceptationRepository;
 import com.example.haemo.haemo.Service.Acceptation.AcceptationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -38,10 +40,16 @@ public class AcceptationController {
         return new ResponseEntity<>(requestedAcceptation, HttpStatus.CREATED);
     }
 
+    @GetMapping(produces = "application/json")
+    @ResponseBody
+    public List<Acceptation> getAllRequest() {
+        return acceptationRepository.findAll();
+    }
+
+
     @GetMapping("/{id}")
     @ResponseBody
-    public ResponseEntity<Acceptation> getAcceptationById(@PathVariable Long id) {
-        Optional<Acceptation> noticeOptional = acceptationRepository.findById(id);
-        return noticeOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    public Acceptation getAcceptationById(@PathVariable Long id) {
+        return acceptationRepository.findByuId(id);
     }
 }
