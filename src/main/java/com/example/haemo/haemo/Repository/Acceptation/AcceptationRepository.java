@@ -7,6 +7,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface AcceptationRepository extends JpaRepository<Acceptation, Long> {
-    List<Acceptation> findAllByuId(Long uId);
-    List<Acceptation> findAllBypId(Long pId);
+    List<Acceptation> findByuId(Long uId);
+    List<Acceptation> findBypId(Long pId);
 }

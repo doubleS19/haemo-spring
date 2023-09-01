@@ -25,7 +25,7 @@ public class AcceptationService {
     }
 
     public Acceptation acceptUserToJoin(Long uId, Long pId){
-        List<Acceptation> joinlist = acceptationRepository.findAllByuId(uId);
+        List<Acceptation> joinlist = acceptationRepository.findByuId(uId);
         Acceptation acceptedReqeust = new Acceptation();
         for(Acceptation wish : joinlist){
             if (wish.getPId().equals(pId)){
@@ -38,7 +38,7 @@ public class AcceptationService {
     }
 
     public void cancleRequest(Long uId, Long pId){
-        List<Acceptation> wishList = acceptationRepository.findAllByuId(uId);
+        List<Acceptation> wishList = acceptationRepository.findByuId(uId);
         for(Acceptation wish : wishList){
             if (wish.getPId().equals(pId)){
                 acceptationRepository.delete(wish);
@@ -48,7 +48,7 @@ public class AcceptationService {
     }
 
     public Acceptation getAcceptationByInfo(Long uId, Long pId){
-        List<Acceptation> wishList = acceptationRepository.findAllByuId(uId);
+        List<Acceptation> wishList = acceptationRepository.findByuId(uId);
         Acceptation acceptedReqeust = new Acceptation();
         for(Acceptation wish : wishList){
             if (wish.getPId().equals(pId)){
@@ -59,7 +59,7 @@ public class AcceptationService {
     }
 
     public Boolean checkRequestExist(Long uId, Long pId){
-        List<Acceptation> wishList = acceptationRepository.findAllByuId(uId);
+        List<Acceptation> wishList = acceptationRepository.findByuId(uId);
         boolean isExist = false;
         for(Acceptation wish : wishList) {
             if (wish.getPId().equals(pId)) {
@@ -71,7 +71,7 @@ public class AcceptationService {
     }
 
     public List<User> getAttendUserList(Long pId){
-        List<Acceptation> wishList = acceptationRepository.findAllBypId(pId);
+        List<Acceptation> wishList = acceptationRepository.findBypId(pId);
         List<User> userList = new ArrayList<>();
         for(Acceptation wish : wishList){
             Long uId = wish.getUId();
