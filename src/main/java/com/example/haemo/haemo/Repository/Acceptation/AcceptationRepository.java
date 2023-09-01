@@ -8,4 +8,5 @@ import java.util.Optional;
 
 public interface AcceptationRepository extends JpaRepository<Acceptation, Long> {
     List<Acceptation> findAllByuId(Long uId);
+    List<Acceptation> findAllBypId(Long pId);
 }

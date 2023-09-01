@@ -4,6 +4,7 @@ import com.example.haemo.haemo.Controller.User.UserController;
 import com.example.haemo.haemo.Data.Acceptation.Acceptation;
 import com.example.haemo.haemo.Data.HotPlace.HotPlace;
 import com.example.haemo.haemo.Data.Notice.Notice;
+import com.example.haemo.haemo.Data.User.User;
 import com.example.haemo.haemo.Repository.Acceptation.AcceptationRepository;
 import com.example.haemo.haemo.Service.Acceptation.AcceptationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,5 +64,11 @@ public class AcceptationController {
     @ResponseBody
     public Boolean checkRequestExist(@PathVariable Long uId, @PathVariable Long pId) {
         return acceptationService.checkRequestExist(uId, pId);
+    }
+
+    @GetMapping("/userList/{pId}")
+    @ResponseBody
+    public List<User> getAttendUserList(@PathVariable Long pId) {
+        return acceptationService.getAttendUserList(pId);
     }
 }
