@@ -1,5 +1,6 @@
 package com.example.haemo.haemo.Service.WishMeeting;
 
+import com.example.haemo.haemo.Data.Acceptation.Acceptation;
 import com.example.haemo.haemo.Data.HotPlace.HotPlace;
 import com.example.haemo.haemo.Data.Post.Post;
 import com.example.haemo.haemo.Data.WishList.WishList;
@@ -46,5 +47,17 @@ public class WishMeetingService {
         List<WishMeeting> userWishList = wishMeetingRepository.findByuId(uId);
         List<Long> pIdList = userWishList.stream().map(WishMeeting::getPId).collect(Collectors.toList());
         return postRepository.findBypIdIn(pIdList);
+    }
+
+    public Boolean checkWishMeetingExist(Long uId, Long pId){
+        List<WishMeeting> wishList = wishMeetingRepository.findByuId(uId);
+        boolean isExist = false;
+        for(WishMeeting wish : wishList) {
+            if (wish.getPId().equals(pId)) {
+                isExist = true;
+                break;
+            }
+        }
+        return isExist;
     }
 }

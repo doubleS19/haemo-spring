@@ -61,6 +61,14 @@ public class WishMeetingController {
         return ResponseEntity.ok(wishList);
     }
 
+    @GetMapping("/isExist/{uId}/{pId}")
+    @ResponseBody
+    public Boolean checkWishMeetingExist(@PathVariable Long uId, @PathVariable Long pId) {
+        return wishMeetingService.checkWishMeetingExist(uId, pId);
+    }
+
+
+
 //    @GetMapping("myList/{uId}")
 //    @ResponseBody
 //    public List<WishList> getWishListByUId(@PathVariable Long uId) {
