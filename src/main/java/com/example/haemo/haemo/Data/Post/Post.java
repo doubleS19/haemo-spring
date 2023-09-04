@@ -38,4 +38,7 @@ public class Post {
 
     @Column(name = "date")
     private String date;
+
+    @Column(name="wishCnt")
+    private Long wishCnt;
 }

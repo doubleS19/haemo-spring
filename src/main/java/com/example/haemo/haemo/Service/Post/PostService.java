@@ -1,5 +1,6 @@
 package com.example.haemo.haemo.Service.Post;
 
+import com.example.haemo.haemo.Data.HotPlace.HotPlace;
 import com.example.haemo.haemo.Data.Post.Post;
 import com.example.haemo.haemo.Repository.Post.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,10 @@ public class PostService {
             // Handle the exception or return null as per your requirement
             return null;
         }
+    }
+
+    public Post getPostById(Long pId){
+        return postRepository.getReferenceById(pId);
     }
 
 //    private List<Post> getSortedPostByDate(){
