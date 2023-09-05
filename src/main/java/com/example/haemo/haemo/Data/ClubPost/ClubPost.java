@@ -17,7 +17,7 @@ public class ClubPost {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cpId")
-    private Long pId;
+    private Long cpId;
 
     @Column(name = "title")
     private String title;
@@ -37,6 +37,8 @@ public class ClubPost {
     @Column(name = "description")
     private String description;
 
+    @Column(name="wishClubCnt")
+    private Long wishClubCnt;
 //    @Column(name = "logo")
 //    private MultipartFile logo;
 }

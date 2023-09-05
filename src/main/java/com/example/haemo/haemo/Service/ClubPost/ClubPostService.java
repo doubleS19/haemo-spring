@@ -1,6 +1,7 @@
 package com.example.haemo.haemo.Service.ClubPost;
 
 import com.example.haemo.haemo.Data.ClubPost.ClubPost;
+import com.example.haemo.haemo.Data.Post.Post;
 import com.example.haemo.haemo.Repository.ClubPost.ClubPostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,10 @@ public class ClubPostService {
 
     public ClubPost savePost(ClubPost post) {
         return clubPostRepository.save(post);
+    }
+
+    public ClubPost getClubPostById(Long cpId){
+        return clubPostRepository.getReferenceById(cpId);
     }
 
 
