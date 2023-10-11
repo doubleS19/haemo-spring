@@ -7,7 +7,7 @@ public class HotPlaceCommentDto {
     Long hcId;
     String content;
     String nickname;
-    Long pId;
+    Long hpId;
     String date;
     Long type;
 }

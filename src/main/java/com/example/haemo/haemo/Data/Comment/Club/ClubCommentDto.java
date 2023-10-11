@@ -7,7 +7,7 @@ public class ClubCommentDto {
     Long ccId;
     String content;
     String nickname;
-    Long pId;
+    Long cpId;
     String date;
     Long type;
 }
