@@ -47,7 +47,7 @@ public class ReplyController {
 
     @GetMapping("commentPost/{cId}")
     @ResponseBody
-    public List<Reply> getCommentsByPId(@PathVariable Long pId) {
+    public List<Reply> getCommentsByPId(@PathVariable Long cId) {
         return commentRepository.findAllBycId(cId);
     }
 
