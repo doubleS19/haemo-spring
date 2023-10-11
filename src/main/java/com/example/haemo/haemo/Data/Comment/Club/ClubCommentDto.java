@@ -9,5 +9,4 @@ public class ClubCommentDto {
     String nickname;
     Long cpId;
     String date;
-    Long type;
 }

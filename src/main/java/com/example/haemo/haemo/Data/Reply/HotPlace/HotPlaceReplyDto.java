@@ -9,5 +9,4 @@ public class HotPlaceReplyDto {
     String nickname;
     Long hcId;
     String date;
-    Long type;
 }

@@ -9,5 +9,4 @@ public class HotPlaceCommentDto {
     String nickname;
     Long hpId;
     String date;
-    Long type;
 }

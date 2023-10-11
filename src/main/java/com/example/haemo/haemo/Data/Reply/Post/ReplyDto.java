@@ -9,5 +9,4 @@ public class ReplyDto {
     String nickname;
     Long pId;
     String date;
-    Long type;
 }

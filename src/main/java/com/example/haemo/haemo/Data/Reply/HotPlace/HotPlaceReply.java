@@ -29,7 +29,4 @@ public class HotPlaceReply {
 
     @Column(name = "date")
     private String date;
-
-    @Column(name = "type")
-    private Long type;
 }

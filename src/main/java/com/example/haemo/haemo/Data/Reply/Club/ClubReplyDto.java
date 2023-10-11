@@ -9,5 +9,4 @@ public class ClubReplyDto {
     String nickname;
     Long cId;
     String date;
-    Long type;
 }
