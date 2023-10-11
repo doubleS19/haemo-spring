@@ -15,8 +15,8 @@ import lombok.Setter;
 public class HotPlaceComment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cId")
-    private Long cId;
+    @Column(name = "hcId")
+    private Long hcId;
 
     @Column(name = "content")
     private String content;

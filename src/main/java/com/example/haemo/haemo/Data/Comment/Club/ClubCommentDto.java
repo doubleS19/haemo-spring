@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class ClubCommentDto {
-    Long cId;
+    Long ccId;
     String content;
     String nickname;
     Long pId;

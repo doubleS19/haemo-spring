@@ -1,4 +1,4 @@
-package com.example.haemo.haemo.Data.Comment.Club;
+package com.example.haemo.haemo.Data.Reply.HotPlace;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,16 +7,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "clubComment")
+@Table(name = "HotPlaceReply")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class ClubComment {
+public class HotPlaceReply {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ccId")
-    private Long ccId;
+    @Column(name = "hrId")
+    private Long hrId;
 
     @Column(name = "content")
     private String content;
@@ -24,8 +24,8 @@ public class ClubComment {
     @Column(name = "nickname")
     private String nickname;
 
-    @Column(name = "cpId")
-    private Long cpId;
+    @Column(name = "hcId")
+    private Long hcId;
 
     @Column(name = "date")
     private String date;
