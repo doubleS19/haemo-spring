@@ -53,13 +53,19 @@ public class HotPlaceCommentController {
         return commentRepository.findAllByHpId(hpId);
     }
 
-    @GetMapping("commentUser/{id}")
-    @ResponseBody
-    public User getUserByComment(@PathVariable Long id) {
-        HotPlaceComment comment = getCommentById(id).getBody();
-        assert comment != null;
-        String userNick = comment.getNickname();
+//    @GetMapping("commentUser/{id}")
+//    @ResponseBody
+//    public User getUserByComment(@PathVariable Long id) {
+//        HotPlaceComment comment = getCommentById(id).getBody();
+//        assert comment != null;
+//        String userNick = comment.getNickname();
+//
+//        return userController.getUserByNickname(userNick);
+//    }
 
-        return userController.getUserByNickname(userNick);
+    @GetMapping("commentUser/{hpId}")
+    @ResponseBody
+    public List<User> getCommentUserByCpId(@PathVariable Long hpId) {
+        return commentService.getCommentUserList(hpId);
     }
 }

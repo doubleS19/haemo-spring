@@ -53,13 +53,19 @@ public class ClubCommentController {
         return commentRepository.findAllByCpId(cpId);
     }
 
-    @GetMapping("commentUser/{id}")
-    @ResponseBody
-    public User getUserByComment(@PathVariable Long id) {
-        ClubComment comment = getCommentById(id).getBody();
-        assert comment != null;
-        String userNick = comment.getNickname();
+//    @GetMapping("commentUser/{id}")
+//    @ResponseBody
+//    public User getUserByComment(@PathVariable Long id) {
+//        ClubComment comment = getCommentById(id).getBody();
+//        assert comment != null;
+//        String userNick = comment.getNickname();
+//
+//        return userController.getUserByNickname(userNick);
+//    }
 
-        return userController.getUserByNickname(userNick);
+    @GetMapping("commentUser/{cpId}")
+    @ResponseBody
+    public List<User> getCommentUserByCpId(@PathVariable Long cpId) {
+        return commentService.getCommentUserList(cpId);
     }
 }

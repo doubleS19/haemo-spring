@@ -50,13 +50,19 @@ public class CommentController {
         return commentRepository.findAllBypId(pId);
     }
 
-    @GetMapping("commentUser/{id}")
-    @ResponseBody
-    public User getUserByComment(@PathVariable Long id) {
-        Comment comment = getCommentById(id).getBody();
-        assert comment != null;
-        String userNick = comment.getNickname();
+//    @GetMapping("commentUser/{id}")
+//    @ResponseBody
+//    public User getUserByComment(@PathVariable Long id) {
+//        Comment comment = getCommentById(id).getBody();
+//        assert comment != null;
+//        String userNick = comment.getNickname();
+//
+//        return userController.getUserByNickname(userNick);
+//    }
 
-        return userController.getUserByNickname(userNick);
+    @GetMapping("commentUser/{pId}")
+    @ResponseBody
+    public List<User> getCommentUserByCpId(@PathVariable Long pId) {
+        return commentService.getCommentUserList(pId);
     }
 }
