@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,5 +57,15 @@ public class ClubPostController {
 
         User user = userController.getUserByNickname(userNick);
         return user;
+    }
+
+    @PostMapping("/uploadImage")
+    public ResponseEntity<String> uploadImage(@RequestParam("image") MultipartFile imageFile, @RequestParam("cpId") Long cpId) {
+        try {
+            postService.uploadImage(cpId, imageFile);
+            return ResponseEntity.ok("Image uploaded successfully.");
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Image upload failed.");
+        }
     }
 }

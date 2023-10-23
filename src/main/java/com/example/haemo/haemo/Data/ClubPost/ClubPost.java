@@ -39,6 +39,8 @@ public class ClubPost {
 
     @Column(name="wishClubCnt")
     private Long wishClubCnt;
-//    @Column(name = "logo")
-//    private MultipartFile logo;
+
+    @Lob
+    @Column(name = "image", columnDefinition = "BLOB")
+    private byte[] image;
 }

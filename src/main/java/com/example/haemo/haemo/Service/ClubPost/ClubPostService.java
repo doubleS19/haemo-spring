@@ -5,6 +5,10 @@ import com.example.haemo.haemo.Data.Post.Post;
 import com.example.haemo.haemo.Repository.ClubPost.ClubPostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.Optional;
 
 @Service
 public class ClubPostService {
@@ -23,6 +27,17 @@ public class ClubPostService {
 
     public ClubPost getClubPostById(Long cpId){
         return clubPostRepository.getReferenceById(cpId);
+    }
+
+    public void uploadImage(Long cpId, MultipartFile imageFile) throws IOException {
+        Optional<ClubPost> optionalClubPost = clubPostRepository.findById(cpId);
+        if (optionalClubPost.isPresent()) {
+            ClubPost clubPost = optionalClubPost.get();
+            clubPost.setImage(imageFile.getBytes());
+            clubPostRepository.save(clubPost);
+        } else {
+            throw new IllegalArgumentException("ClubPost not found with ID: " + cpId);
+        }
     }
 
 
