@@ -36,6 +36,6 @@ public class HotPlace {
     @Column(name="wishing")
     private Long wishing;
 
-//    @Column(name="images")
-//    private List<MultipartFile> images;
+    @ElementCollection
+    private List<byte[]> imageList;
 }
