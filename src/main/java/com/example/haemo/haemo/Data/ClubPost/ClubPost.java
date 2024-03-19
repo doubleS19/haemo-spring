@@ -16,8 +16,8 @@ import org.springframework.web.multipart.MultipartFile;
 public class ClubPost {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pId")
-    private Long pId;
+    @Column(name = "cpId")
+    private Long cpId;
 
     @Column(name = "title")
     private String title;
@@ -37,6 +37,10 @@ public class ClubPost {
     @Column(name = "description")
     private String description;
 
-//    @Column(name = "logo")
-//    private MultipartFile logo;
+    @Column(name="wishClubCnt")
+    private Long wishClubCnt;
+
+    @Lob
+    @Column(name = "image", columnDefinition = "BLOB")
+    private byte[] image;
 }

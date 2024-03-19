@@ -1,18 +1,15 @@
 package com.example.haemo.haemo.Controller.HotPlace;
 
 import com.example.haemo.haemo.Controller.User.UserController;
-import com.example.haemo.haemo.Data.ClubPost.ClubPost;
 import com.example.haemo.haemo.Data.HotPlace.HotPlace;
-import com.example.haemo.haemo.Data.HotPlace.HotPlaceDto;
 import com.example.haemo.haemo.Data.User.User;
-import com.example.haemo.haemo.Repository.ClubPostRepository;
 import com.example.haemo.haemo.Repository.HotPlace.HotPlaceRepository;
-import com.example.haemo.haemo.Service.ClubPostService;
 import com.example.haemo.haemo.Service.HotPlace.HotPlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -59,5 +56,16 @@ public class HotPlaceController {
 
         User user = userController.getUserByNickname(userNick);
         return user;
+    }
+
+    @PostMapping("/{pId}/uploadImages")
+    public String uploadImages(@PathVariable Long pId, @RequestBody List<byte[]> imageList) {
+        postService.saveHotPlaceImages(pId, imageList);
+        return "Images uploaded successfully";
+    }
+
+    @GetMapping("/{pId}/getImages")
+    public List<byte[]> getImages(@PathVariable Long pId) {
+        return postService.getHotPlaceImages(pId);
     }
 }

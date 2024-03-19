@@ -1,10 +1,7 @@
 package com.example.haemo.haemo.Data.HotPlace;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -18,8 +15,8 @@ import java.util.List;
 public class HotPlace {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pId")
-    private Long pId;
+    @Column(name = "hpId")
+    private Long hpId;
 
     @Column(name = "title")
     private String title;
@@ -36,6 +33,9 @@ public class HotPlace {
     @Column(name="date")
     private String date;
 
-//    @Column(name="images")
-//    private List<MultipartFile> images;
+    @Column(name="wishing")
+    private Long wishing;
+
+    @ElementCollection
+    private List<byte[]> imageList;
 }

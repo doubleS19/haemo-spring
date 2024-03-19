@@ -3,13 +3,15 @@ package com.example.haemo.haemo.Controller.Club;
 import com.example.haemo.haemo.Controller.User.UserController;
 import com.example.haemo.haemo.Data.ClubPost.ClubPost;
 import com.example.haemo.haemo.Data.User.User;
-import com.example.haemo.haemo.Repository.ClubPostRepository;
-import com.example.haemo.haemo.Service.ClubPostService;
+import com.example.haemo.haemo.Repository.ClubPost.ClubPostRepository;
+import com.example.haemo.haemo.Service.ClubPost.ClubPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -57,18 +59,13 @@ public class ClubPostController {
         return user;
     }
 
-//
-//    public List<Post> get24HoursPosts() {
-//        LocalDateTime twentyFourHoursLeft = LocalDateTime.now().plusHours(24);
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시");
-//
-//        List<Post> recentPosts = postRepository.findAll().stream()
-//                .filter(post -> {
-//                    LocalDateTime postDate = LocalDateTime.parse(post.getDate(), formatter);
-//                    return postDate.isAfter(twentyFourHoursLeft);
-//                })
-//                .collect(Collectors.toList());
-//
-//        return recentPosts;
-//    }
+    @PostMapping("/uploadImage")
+    public ResponseEntity<String> uploadImage(@RequestParam("image") MultipartFile imageFile, @RequestParam("cpId") Long cpId) {
+        try {
+            postService.uploadImage(cpId, imageFile);
+            return ResponseEntity.ok("Image uploaded successfully.");
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Image upload failed.");
+        }
+    }
 }

@@ -4,6 +4,8 @@ import com.example.haemo.haemo.Repository.HotPlace.HotPlaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class HotPlaceService {
 
@@ -19,32 +21,33 @@ public class HotPlaceService {
         return hotPlaceRepository.save(post);
     }
 
+    public HotPlace getHotPlaceById(Long pId){
+        return hotPlaceRepository.getReferenceById(pId);
+    }
 
-//    public List<Post> getPostsAfterDate(String date) {
-//        return postRepository.findByDateAfter(date);
-//    }
+    public List<HotPlace> getHotPlacesByPIds(List<Long> pIds) {
+        return hotPlaceRepository.findByHpIdIn(pIds);
+    }
 
-//    public List<PostDto> allCashBoardEntity(){
-//        return exec();
-//    }
-//
-//    public List<PostDto> exec(){
-//        List<Post> postList = new ArrayList<>(postRepository.findAll());
-//
-//        List<PostDto> postDtoList = new ArrayList<>();
-//
-//        for(Post post: postList){
-//            PostDto requestDetailAll = new PostDto();
-//            requestDetailAll.setPId(post.getPId());
-//            requestDetailAll.setTitle(post.getTitle());
-//            requestDetailAll.setContent(post.getContent());
-//            requestDetailAll.setCategory(post.getCategory());
-//            requestDetailAll.setPerson(post.getPerson());
-//            requestDetailAll.setNickname(post.getNickname());
-//            requestDetailAll.setCreatedAt(post.getCreatedAt());
-//            requestDetailAll.setType(post.getType());
-//            postDtoList.add(requestDetailAll);
-//        }
-//        return postDtoList;
-//    }
+    public void saveHotPlaceImages(Long pId, List<byte[]> imageList) {
+        HotPlace hotPlace = hotPlaceRepository.findById(pId).orElse(null);
+        if (hotPlace != null) {
+            hotPlace.setImageList(imageList);
+            hotPlaceRepository.save(hotPlace);
+        } else {
+            // 해당 pId의 핫플레이스를 찾을 수 없음
+            // 오류 처리 또는 예외 처리 추가
+        }
+    }
+
+    public List<byte[]> getHotPlaceImages(Long pId) {
+        HotPlace hotPlace = hotPlaceRepository.findById(pId).orElse(null);
+        if (hotPlace != null) {
+            return hotPlace.getImageList();
+        } else {
+            // 해당 pId의 핫플레이스를 찾을 수 없음
+            // 오류 처리 또는 예외 처리 추가
+            return null; // 또는 다른 적절한 처리
+        }
+    }
 }
